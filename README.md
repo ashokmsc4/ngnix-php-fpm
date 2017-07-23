@@ -1,2 +1,2 @@
 # ngnix-php-fpm
-This repo contains nginx with php-fpm
+This repository contains nginx with php-fpm

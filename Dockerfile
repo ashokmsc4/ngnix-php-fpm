@@ -238,6 +238,7 @@ ADD src/ /var/www/html/
 ADD errors/ /var/www/errors
 
 VOLUME /var/www/html
+RUN chmod 777 -R /var/www/html/
 
 EXPOSE 443 80
 

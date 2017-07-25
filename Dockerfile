@@ -1,6 +1,19 @@
 FROM php:7.1.6-fpm-alpine
 
-MAINTAINER ngineered <support@ngineered.co.uk>
+MAINTAINER ashok <ashokmsc4@gmail.com>
+
+# Install packages
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && apt-get -y upgrade
+
+# Add image configuration and scripts
+RUN apt-get install -y mysql-server
+ADD my.cnf /etc/mysql/conf.d/my.cnf 
+ADD run /usr/local/bin/run
+RUN chmod +x /usr/local/bin/run
+
+VOLUME ["/var/lib/mysql"]
+CMD ["/usr/local/bin/run"]
 
 ENV php_conf /usr/local/etc/php-fpm.conf
 ENV fpm_conf /usr/local/etc/php-fpm.d/www.conf
